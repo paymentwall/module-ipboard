@@ -182,7 +182,7 @@ class _Paymentwall extends \IPS\nexus\Gateway
                 if ($settings['delivery']) {
                     // Delivery Confirmation
                     $delivery = new Paymentwall_GenerericApiObject('delivery');
-                    $response = $delivery->post($this->prepareDeleveryData($transaction, $settings['test_mode']));
+                    $response = $delivery->post($this->prepareDeleveryData($transaction, $settings['test_mode']), $pingback->getReferenceId());
                 }
                 $transaction->approve();
 
@@ -281,7 +281,7 @@ class _Paymentwall extends \IPS\nexus\Gateway
      * @param bool $isTest
      * @return array
      */
-    private function prepareDeleveryData(\IPS\nexus\Transaction $transaction, $isTest = false)
+    private function prepareDeleveryData(\IPS\nexus\Transaction $transaction, $isTest = false, $ref)
     {
         $shippingAddress = $transaction->invoice->shipaddress;
         $shippingData = array();
@@ -298,7 +298,7 @@ class _Paymentwall extends \IPS\nexus\Gateway
 
         return array_merge(
             array(
-                'payment_id' => $transaction->invoice->id,
+                'payment_id' => $ref,
                 'type' => 'digital',
                 'status' => 'delivered',
                 'estimated_delivery_datetime' => date('Y/m/d H:i:s'),
