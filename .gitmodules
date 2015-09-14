@@ -1,0 +1,3 @@
+[submodule "src/admin/applications_addon/ips/nexus/sources/gateways/libs/Paymentwall"]
+	path = src/admin/applications_addon/ips/nexus/sources/gateways/libs/Paymentwall
+	url = git@github.com:paymentwall/paymentwall-php.git
