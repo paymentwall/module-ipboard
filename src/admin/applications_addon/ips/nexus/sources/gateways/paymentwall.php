@@ -23,7 +23,7 @@ class gateway_paymentwall extends gatewayCore
             array_push($productNames, $item['quantity'] . ' x ' . $item['itemName']);
         }
 
-        $email = $this->DB->query("SELECT email FROM members WHERE member_id = " . (int)$this->member->member_id)->fetch_assoc();
+        $email = mysql_fetch_assoc($this->DB->query("SELECT email FROM members WHERE member_id = " . (int)$this->member->member_id));
         $email = $email['email'];
 
         $widget = new Paymentwall_Widget(
