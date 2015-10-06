@@ -167,10 +167,6 @@ class _Paymentwall extends \IPS\nexus\Gateway
         $settings = $this->getSettings();
         self::initPaymentwall($settings['project_key'], $settings['secret_key']);
 
-        unset($_GET['app']);
-        unset($_GET['module']);
-        unset($_GET['controller']);
-
         $pingback = new \Paymentwall_Pingback($_GET, $_SERVER['REMOTE_ADDR']);
         //$result = array();
         if ($pingback->validate()) {
