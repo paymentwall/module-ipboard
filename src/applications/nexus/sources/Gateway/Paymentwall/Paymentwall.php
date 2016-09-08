@@ -91,7 +91,7 @@ class _Paymentwall extends \IPS\nexus\Gateway
             array(                           // product details for Flexible Widget Call. To let users select the product on Paymentwall's end, leave this array empty
                 new \Paymentwall_Product(
                     $transaction->invoice->id,                        // id of the product in your system
-                    $transaction->amount->amount,                    // price
+                    (string) $transaction->amount->amount,                    // price
                     $transaction->currency,        // currency code
                     'Invoice #' . $transaction->invoice->id,                            // product name
                     \Paymentwall_Product::TYPE_FIXED            // this is a time-based product; for one-time products, use Paymentwall_Product::TYPE_FIXED and omit the following 3 array elements
@@ -119,7 +119,7 @@ class _Paymentwall extends \IPS\nexus\Gateway
 
         echo $widget->getHtmlCode(array(
             'width' => '100%',
-            'height' => '400px'
+            'height' => '600px'
         ));
         die;
     }
