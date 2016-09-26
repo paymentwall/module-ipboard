@@ -177,7 +177,7 @@ class _Paymentwall extends \IPS\nexus\Gateway
                 // Call Delivery Confirmation API
                 if ($settings['delivery']) {
                     // Delivery Confirmation
-                    $delivery = new Paymentwall_GenerericApiObject('delivery');
+                    $delivery = new \Paymentwall_GenerericApiObject('delivery');
                     $response = $delivery->post($this->prepareDeleveryData($transaction, $settings['test_mode']), $pingback->getReferenceId());
                 }
                 $transaction->approve();
